@@ -15,6 +15,7 @@ function createPromise(position, delay) {
       const shouldResolve = Math.random() > 0.3;
 
       if (shouldResolve) {
+  
         resolve({ position, delay });
       } else {
         reject({ position, delay });
@@ -64,12 +65,13 @@ function onFormSubmit(evt) {
 
 // // Ф-я создания промиса 
 // function createPromise(position, delay) {
-//   // возврат промиса
+//   // возврат промиса (вернется в место вызова ф-ии createPromise(value, inpDelay) )
 //   return new Promise((resolve, reject) => {
 //     setTimeout(() => {
 //       const shouldResolve = Math.random() > 0.3;
 
 //       if (shouldResolve) {
+  // в resolve можно вернуть только одно значение: число, строку, или объект (что мы и делаем)!!!!!!!! //
 //         resolve({ position, delay });
 //       } else {
 //         reject({ position, delay });
@@ -103,11 +105,14 @@ function onFormSubmit(evt) {
 //     // который при каждой итерации будет увеличиваться на inpStep - шаг задержки, который мы вводим в форму 
 //     createPromise(value, inpDelay)
 //       // при успешном промисе будем выводить след. сообщение
+// то есть в then мы передаем значение из resolve - то есть объект
 //       .then(({ position, delay }) => {
+  // к значеним объекта обращаемся через их свойства - position и delay
 //         Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`);
 //         console.log(`✅ Fulfilled promise ${position} in ${delay}ms`);
 //       })
 //       // при неуспешном промисе будем выводить след. сообщение
+// то есть в catch мы передаем значение из reject - то есть объект
 //       .catch(({ position, delay }) => {
 //         Notify.failure(`❌ Rejected promise ${position} in ${delay}ms`);
 //         console.log(`❌ Rejected promise ${position} in ${delay}ms`);
